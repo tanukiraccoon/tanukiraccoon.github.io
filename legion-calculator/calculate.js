@@ -41,11 +41,15 @@ function sumFields() {
   };
 
   const inputs = document.querySelectorAll('input[type="number"]');
+  const sortedInputs = Array.from(inputs)
+    .filter((input) => input.value.trim() !== "") // Ignore inputs with blank values
+    .sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
+  const top42Inputs = sortedInputs.slice(0, 42);
 
   let charCount = 0;
   let totalSum = 0;
 
-  inputs.forEach((input) => {
+  top42Inputs.forEach((input) => {
     const level = parseInt(input.value);
     const classType = input.className.split(" ")[1];
 
