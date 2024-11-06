@@ -1,316 +1,113 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Legion Level Calculator</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <script src="class.js"></script> -->
-</head>
-
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .header {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .card {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+      .input-group label {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
     <div class="container">
-        <div class="col-12 d-flex justify-content-center mb-1">
-            <h1>Legion Level Calculator</h1>
+      <div class="fs-1 fw-bold text-center m-2">Legion Level Calculator</div>
+      <form id="fromGroup">
+        <div class="row" id="classGroup"></div>
+      </form>
+      <div class="d-flex justify-content-center p-4 gap-4">
+        <button type="button" class="btn btn-primary fs-5" id="calculate">
+          Calculate
+        </button>
+        <button type="button" class="btn btn-secondary fs-5" id="reset">
+          Reset
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card border-dark">
+            <div class="fs-5 fw-semibold">Legion Overview</div>
+            <div class="mt-2">
+              <span class="fw-semibold">Legion Lvl:</span>
+              <span id="legionlevel">0</span>
+            </div>
+            <div>
+              <span class="fw-semibold">Legion Count: </span
+              ><span id="legioncount">0</span> / 42
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="calculationMode"
+                id="mode1"
+                checked
+              />
+              <label class="form-check-label" for="mode1">
+                Top 42 Characters
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="calculationMode"
+                id="mode2"
+              />
+              <label class="form-check-label" for="mode2">
+                Include All Characters
+              </label>
+            </div>
+          </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Adele"> Adele:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Adele" />
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Angelic Buster"> Angelic Buster:</span><input type="number" min="0" max="300"
-                        class="form-control Pirate" name="Angelic Buster" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Aran"> Aran:</span><input type="number" min="0" max="300" class="form-control Warrior"
-                        name="Aran" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Ark"> Ark:</span><input type="number" min="0" max="300" class="form-control Pirate"
-                        name="Ark" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Battle Mage"> Battle Mage:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Battle Mage" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Beast Tamer"> Beast Tamer:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Beast Tamer" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Bishop"> Bishop:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Bishop" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Blaster"> Blaster:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Blaster" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Blaze Wizard"> Blaze Wizard:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Blaze Wizard" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Bowmaster"> Bowmaster:</span><input type="number" min="0" max="300"
-                        class="form-control Bowman" name="Bowmaster" />
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Buccaneer"> Buccaneer:</span><input type="number" min="0" max="300"
-                        class="form-control Pirate" name="Buccaneer" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Cadena"> Cadena:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Cadena" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Cannoneer"> Cannoneer:</span><input type="number" min="0" max="300"
-                        class="form-control Pirate" name="Cannoneer" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Corsair"> Corsair:</span><input type="number" min="0" max="300"
-                        class="form-control Pirate" name="Corsair" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Dark Knight"> Dark Knight:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Dark Knight" />
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Dawn Warrior"> Dawn Warrior:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Dawn Warrior" />
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Demon Avenger"> Demon Avenger:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Demon Avenger" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Demon Slayer"> Demon Slayer:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Demon Slayer" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Dual Blade"> Dual Blade:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Dual Blade" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Evan"> Evan:</span><input type="number" min="0" max="300" class="form-control Magician"
-                        name="Evan" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Fire Poison"> Fire Poison:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Fire Poison" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Hayato"> Hayato:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Hayato" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Hero"> Hero:</span><input type="number" min="0" max="300" class="form-control Warrior"
-                        name="Hero" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Hoyoung"> Hoyoung:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Hoyoung" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Ice Lightning"> Ice Lightning:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Ice Lightning" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Illium"> Illium:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Illium" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Jett"> Jett:</span><input type="number" min="0" max="300" class="form-control Pirate"
-                        name="Jett" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Kain"> Kain:</span><input type="number" min="0" max="300" class="form-control Bowman"
-                        name="Kain" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Kaiser"> Kaiser:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Kaiser" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Kanna"> Kanna:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Kanna" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Kinesis"> Khali:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Khali" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Kinesis"> Kinesis:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Kinesis" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Lara"> Lara:</span><input type="number" min="0" max="300" class="form-control Magician"
-                        name="Lara" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Luminous"> Luminous:</span><input type="number" min="0" max="300"
-                        class="form-control Magician" name="Luminous" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Marksman"> Marksman:</span><input type="number" min="0" max="300"
-                        class="form-control Bowman" name="Marksman" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Mechanic"> Mechanic:</span><input type="number" min="0" max="300"
-                        class="form-control Pirate" name="Mechanic" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Mercedes"> Mercedes:</span><input type="number" min="0" max="300"
-                        class="form-control Bowman" name="Mercedes" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Mihile"> Mihile:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Mihile" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Night Lord"> Night Lord:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Night Lord" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Night Walker"> Night Walker:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Night Walker" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Paladin"> Paladin:</span><input type="number" min="0" max="300"
-                        class="form-control Warrior" name="Paladin" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Pathfinder"> Pathfinder:</span><input type="number" min="0" max="300"
-                        class="form-control Bowman" name="Pathfinder" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Phantom"> Phantom:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Phantom" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Shade"> Shade:</span><input type="number" min="0" max="300" class="form-control Pirate"
-                        name="Shade" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Shadower"> Shadower:</span><input type="number" min="0" max="300"
-                        class="form-control Thief" name="Shadower" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Thunder Breaker"> Thunder Breaker:</span><input type="number" min="0" max="300"
-                        class="form-control Pirate" name="Thunder Breaker" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Wild Hunter"> Wild Hunter:</span><input type="number" min="0" max="300"
-                        class="form-control Bowman" name="Wild Hunter" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Wind Archer"> Wind Archer:</span><input type="number" min="0" max="300"
-                        class="form-control Bowman" name="Wind Archer" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Xenon"> Xenon:</span><input type="number" min="0" max="300" class="form-control Thief"
-                        name="Xenon" />
-                </div>
-
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-1">
-                    <span class="Zero"> Zero:</span><input type="number" min="0" max="300" class="form-control Warrior"
-                        name="Zero" />
-                </div>
-
-            </div>
-            <div class="col-12 d-flex justify-content-center mt-3">
-                <button onclick="sumFields()" class="btn btn-primary justify-content-center">Calculate Legion</button>
-            </div>
-            <div class="row">
-                <div class="col-4 mt-3">
-                    <h3>Legion Count</h3>
-                    <p>Legion Level: <span id="totalLevel"></span></p>
-                    <p>Legion Character: <span id="charCount"></span></p>
-                    <p>Max Character: 42</p>
-                </div>
-                <div class="col-4 mt-3">
-                    <h3>Legion Rank</h3>
-                    <p>Rank B Lv. 60-99 (Lv. 130-159 for Zero): <span id="rankB"></span></p>
-                    <p>Rank A Lv. 100-139 (Lv. 160-179 for Zero): <span id="rankA"></span></p>
-                    <p>Rank S Lv. 140-199 (Lv. 180-199 for Zero): <span id="rankS"></span></p>
-                    <p>Rank SS Lv. 200-249: <span id="rankSS"></span></p>
-                    <p>Rank SSS Lv. 250: <span id="rankSSS"></span></p>
-                </div>
-                <div class="col-4 mt-3">
-                    <h3>Legion Block</h3>
-                    <p> Lv.60: <span id="lvl_60"></span></p>
-                    <p>Lv.100: <span id="lvl_100"></span></p>
-                    <p>Lvl 140 Warrior/Pirate: <span id="lvl_140_WP"></span></p>
-                    <p>Lvl 140 Mage/Thief/Archer: <span id="lvl_140_MTA"></span></p>
-                    <p>Lvl 200 Warrior: <span id="lvl_200_Warrior"></span></p>
-                    <p>Lvl 200 Archer: <span id="lvl_200_Bowman"></span></p>
-                    <p>Lvl 200 Thief: <span id="lvl_200_Thief"></span></p>
-                    <p>Lvl 200 Mage: <span id="lvl_200_Magician"></span></p>
-                    <p>Lvl 200 Pirate: <span id="lvl_200_Pirate"></span></p>
-                    <p>Lvl 250 Warrior: <span id="lvl_250_Warrior"></span></p>
-                    <p>Lvl 250 Archer: <span id="lvl_250_Bowman"></span></p>
-                    <p>Lvl 250 Thief: <span id="lvl_250_Thief"></span></p>
-                    <p>Lvl 250 Mage: <span id="lvl_250_Magician"></span></p>
-                    <p>Lvl 250 Pirate: <span id="lvl_250_Pirate"></span></p>
-                    <p>Lvl 250 Xenon: <span id="lvl_250_Xenon"></span></p>
-                </div>
-            </div>
+        <div class="col-md-2">
+          <div class="card border-dark">
+            <div class="fs-5 fw-semibold">Legion Class</div>
+            <div id="legionclass" class="mt-2"></div>
+          </div>
         </div>
+        <div class="col-md-4">
+          <div class="card border-dark">
+            <div class="fs-5 fw-semibold">Legion Rank</div>
+            <div id="legionrank" class="mt-2"></div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card border-dark">
+            <div class="fs-5 fw-semibold">Legion Grid</div>
+            <div id="legiongrid" class="mt-2"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        crossorigin="anonymous"></script>
-
-    <!-- Your custom JavaScript file -->
-    <script src="calculate.js"></script>
-</body>
-
+    <script src="./utils.js" type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
