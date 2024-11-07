@@ -1,10 +1,6 @@
-import {
-  characters,
-  legionRank,
-  legionClass,
-  legionGrid,
-  allChar,
-} from "./constants.js";
+import { characters, legionRank, legionClass, legionGrid } from "./constants.js";
+
+let isCalculate = false;
 
 window.onload = function () {
   initializeCharacterInputs();
@@ -12,13 +8,9 @@ window.onload = function () {
   initializeLegionClassDisplay();
   initializeLegionGridDisplay();
 
-  document
-    .getElementById("calculate")
-    .addEventListener("click", calculateLegion);
+  document.getElementById("calculate").addEventListener("click", calculateLegion);
 
   document.getElementById("reset").addEventListener("click", resetData);
-  document.getElementById("mode1").addEventListener("change", calculateLegion);
-  document.getElementById("mode2").addEventListener("change", calculateLegion);
 };
 
 function initializeCharacterInputs() {
@@ -29,7 +21,7 @@ function initializeCharacterInputs() {
   classGroupElement.innerHTML = characters
     .map(
       (char) => `
-      <div class="col-lg-2 col-md-4 col-sm-6 col-6 mb-1 fw-semibold">
+      <div class="col-lg-2 col-md-3 col-sm-6 col-6 mb-1 fw-semibold">
         <span>${char.name}</span>
         <input type="number" class="form-control" id='${char.name}' value=${
         storedValue[char.name] || char.level
@@ -45,9 +37,9 @@ function initializeLegionRankDisplay() {
     .map(
       (rnk) => `
       <div>
-        <span class="fw-semibold">${rnk.rank === "Unrank" ? "" : "Rank"} ${
-        rnk.rank
-      } Lvl. ${rnk.min}-${rnk.max} / ${rnk.zmin}-${rnk.zmax} (Zero):</span>
+        <span class="fw-semibold">${rnk.rank === "Unrank" ? "" : "Rank"} ${rnk.rank} Lvl. ${
+        rnk.min
+      }-${rnk.max} / ${rnk.zmin}-${rnk.zmax} (Zero):</span>
         <span id='${rnk.rank}'>${rnk.count}</span>
       </div>
     `
@@ -67,19 +59,6 @@ function initializeLegionClassDisplay() {
 }
 
 function initializeLegionGridDisplay() {
-  // legionGrid.forEach((grd) => {
-  //   const level = legionRank
-  //     .filter((rnk) => rnk.rank === grd.baseRank)
-  //     .map((rnk) => rnk.min);
-  //   const job =
-  //     level > 100
-  //       ? grd.jobSpecific.length > 0 && grd.nameSpecific == null
-  //         ? grd.jobSpecific
-  //         : grd.nameSpecific
-  //       : "";
-  //   const element = `<div><span class="fw-semibold">Lv. ${level} ${job}:</span> <span id='${grd.grid}'>${grd.count}</span> </div>`;
-  //   document.getElementById("legiongrid").innerHTML += element;
-  // });
   const legionGridElement = document.getElementById("legiongrid");
   legionGridElement.innerHTML = legionGrid
     .map(
@@ -92,6 +71,11 @@ function initializeLegionGridDisplay() {
 
 function calculateLegion() {
   let characterData = {};
+  if (!isCalculate) {
+    isCalculate = true;
+    document.getElementById("mode1").addEventListener("change", calculateLegion);
+    document.getElementById("mode2").addEventListener("change", calculateLegion);
+  }
   characters.forEach((character) => {
     const element = document.getElementById(character.name);
     character.level = parseInt(element?.value) || 0;
@@ -130,8 +114,7 @@ function updateDisplayValues(array, type) {
 function updateLegionClass(chars) {
   legionClass.forEach((cls) => {
     cls.count = chars.reduce(
-      (count, char) =>
-        char.level > 0 && char.job === cls.class ? count + 1 : count,
+      (count, char) => (char.level > 0 && char.job === cls.class ? count + 1 : count),
       0
     );
   });
@@ -161,10 +144,7 @@ function updateLegionGrid(chars) {
       const isNameMatch = grd.nameSpecific === char.name;
 
       if (isRankMatch) {
-        if (
-          isRankSSS &&
-          ((isXenon && isNameMatch) || (!isXenon && isJobMatch))
-        ) {
+        if (isRankSSS && ((isXenon && isNameMatch) || (!isXenon && isJobMatch))) {
           char.grid = grd.grid;
           return count + 1;
         } else if (!isRankSSS && isJobMatch) {

@@ -516,4 +516,3 @@ export const legionGrid = [
     count: 0,
   },
 ];
-export let allChar = true;
