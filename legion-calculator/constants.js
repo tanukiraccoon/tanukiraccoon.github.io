@@ -391,6 +391,30 @@ export const characters = [
     rank: null,
     grid: null,
   },
+  {
+    name: "Mo Xuan",
+    class: "Other",
+    job: "Magician",
+    level: 0,
+    rank: null,
+    grid: null,
+  },
+  {
+    name: "S",
+    class: "Other",
+    job: "Magician",
+    level: 0,
+    rank: null,
+    grid: null,
+  },
+  {
+    name: "Ren",
+    class: "Other",
+    job: "Magician",
+    level: 0,
+    rank: null,
+    grid: null,
+  },
 ];
 export const legionClass = [
   { class: "Archer", count: 0 },
